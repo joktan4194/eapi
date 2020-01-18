@@ -7,6 +7,7 @@ use App\Http\Resources\Collection\Product\ProductCollection;
 use App\Http\Resources\Collection\Product\ProductResource;
 use Illuminate\Http\Request;
 
+
 class ProductController extends Controller
 {
     /**
@@ -14,6 +15,10 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    function __construct()
+    {
+        $this->middleware('auth:api')->except('index','show');
+    }
     public function index()
     {
         return ProductCollection::collection(Product::paginate(5));
@@ -37,7 +42,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return "here";
     }
 
     /**
