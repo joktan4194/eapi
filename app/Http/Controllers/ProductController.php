@@ -89,6 +89,7 @@ class ProductController extends Controller
          $product->detail=$request->description;
          unset($request->description);
          $product->update($request->all());
+         return response('Product Successfully Updated',Response::HTTP_CREATED);
     }
 
     /**
@@ -99,6 +100,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        //return$product;
+        $product->delete();
+        return response('Producted Successfully Deleted',Response::HTTP_NO_CONTENT);
     }
 }
